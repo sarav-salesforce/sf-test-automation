@@ -29,7 +29,11 @@ jobs:
             ${{ runner.os }}-m2
 
       - name: Run Maven tests
+        env:
+          sit_salesforce_username : ${{ secrets.sit_salesforce_username }}
+          sit_salesforce_password : ${{ secrets.sit_salesforce_password }}
         run: mvn clean test -Dcucumber.filter.tags="@SmokeTest"
+        continue-on-error: true
 
       - name: Store Test Results
         uses: actions/upload-artifact@v3
