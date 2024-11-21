@@ -1,0 +1,40 @@
+name: Run Maven Cucumber Tests
+
+on:
+  push:
+    branches:
+      - feature/sfCommit
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
+
+      - name: Run Maven tests
+        run: mvn clean test -Dcucumber.filter.tags="@SmokeTest"
+
+      - name: Store Test Results
+        uses: actions/upload-artifacts@v3
+        with:
+          name: test-results
+          path: target/
+
+
