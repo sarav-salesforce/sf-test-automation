@@ -1,6 +1,3 @@
-
-
-
 main ---> develop ---> feature/branch
 feature/branch ------raise pr----> develop -----raise pr----> main
 
