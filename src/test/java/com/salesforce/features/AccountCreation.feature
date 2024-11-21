@@ -6,7 +6,7 @@ Feature: Account Creation
     Then User should be logged in successfully
     And User chooses "Sales" from App Launcher
 
-  @Regression @SanityTest
+  @Regression @SanityTest @SmokeTest
   Scenario Outline: Creation of new Account in Salesforce
     Given User clicks on "Accounts" tab
     When User clicks on new button in "Accounts" tab
