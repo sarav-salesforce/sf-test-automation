@@ -2,7 +2,7 @@ Feature: Account Creation
 
   Background:
     Given User opens salesforce login url
-    When User enters valid credentials
+    When User logs in with JWT
     Then User should be logged in successfully
     And User chooses "Sales" from App Launcher
 

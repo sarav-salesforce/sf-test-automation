@@ -34,13 +34,11 @@ public class LoginPageSteps {
 
     }
 
-    @When("User enters valid credentials")
-    public void user_enters_valid_credentials() {
+    @When("User logs in with JWT")
+    public void userLogsInWithJwt() {
         loginPage = testContext.pageObjectManager.getLoginPage();
-        loginPage.enterUserName(System.getenv("sit_salesforce_username"));
-        loginPage.enterPassword(System.getenv("sit_salesforce_password"));
-        loginPage.clickLoginButton();
-        TestContext.extentTest.log(Status.PASS, "Valid credentials entered ");
+        loginPage.loginWithJwt();
+        TestContext.extentTest.log(Status.PASS, "Logged in with the Salesforce JWT bearer flow");
     }
 
     @When("User enters invalid credentials")

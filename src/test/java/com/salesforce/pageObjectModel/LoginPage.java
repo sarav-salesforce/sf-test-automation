@@ -1,5 +1,6 @@
 package com.salesforce.pageObjectModel;
 
+import com.salesforce.utils.SalesforceJwtAuth;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,6 +30,15 @@ public class LoginPage {
 
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
+    }
+
+    /** Log in without entering a username or password in the browser. */
+    public void loginWithJwt() {
+        SalesforceJwtAuth.login(driver);
+    }
+
+    public void loginWithJwt(String redirectPath) {
+        SalesforceJwtAuth.login(driver, redirectPath);
     }
 
     public boolean assertLoginError(String errorMessage) {

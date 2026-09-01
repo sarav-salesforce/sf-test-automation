@@ -3,7 +3,7 @@ Feature: Test Salesforce login feature
   @SmokeTest @Regression
   Scenario: Verify whether user is able to login to Salesforce with valid credentials
     Given User opens salesforce login url
-    When User enters valid credentials
+    When User logs in with JWT
     Then User should be logged in successfully
 
   @Regression @ErrorValidation
